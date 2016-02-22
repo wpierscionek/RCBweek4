@@ -1,0 +1,79 @@
+body{
+	background: url('http://www.pageresource.com/wallpapers/wallpaper/magic-book_1464620.jpg');
+	font-size: 24px;
+	font-weight: 650;
+	color: #fff;
+}
+#container{
+	width: 900px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#header{
+	color: #fff;
+	font-size: 60px;
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+	background-color: rgba(112, 240, 0, 0.39);
+}
+#instructions{
+	width: 440px;
+	background-color: rgba(112, 240, 0, 0.39);
+	font-family: 'Poiret One', cursive;
+	margin-top: 20px;
+	margin-right: 20px;
+	padding: 5px;
+	float: left;
+}
+#randomNumber{
+	width: 430px;
+	height: 100px;
+	background-color: rgba(112, 240, 0, 0.39);
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	margin-top: 20px;
+	font-size: 30px;
+	font-weight: 800;
+	float: left;
+	padding-top: 20px;
+}
+#board{
+	width: 430px;
+	height: 100px;
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	float: left;
+	margin-top: 10px;
+	background-color: rgba(112, 240, 0, 0.39);
+	padding-top: 20px;
+
+}
+#jewels{
+	width: 450px;
+	margin-left: 250px;
+	margin-top: 20px;
+	float: left;
+}
+#jewels img{
+	width: 70px;
+	height: 87px;
+	display: inline-block;
+	padding: 16px;
+	border: solid 3px white;
+}
+#score{
+	width: 900px;
+	height: 200px;
+	background-color: rgba(112, 240, 0, 0.39);
+	margin-top: 20px;
+	float: left;
+	font-family: 'Oswald', sans-serif;
+	text-align: center;
+	padding-top: 50px;
+	font-size: 50px;
+}
+#score h3{
+	font-size: 40px;
+	color: #fff;
+}
