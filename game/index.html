@@ -8,6 +8,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
 	<script src="http://code.jquery.com/jquery.js"></script>
+	<audio src="background.wav" autoplay loop></audio>
 
 </head>
 <body>
@@ -19,13 +20,12 @@
 			<p> The Crystal Collector is a hidden object game. Frederic is one of the last collectors of crystals that can be found in nature. This time, his passion and curiosity have lead him to one small city in South America. The rumors say that in this place could be found the richest place with deposits of natural crystals. Help Frederic make a plan of how to get to the place safely and finish his adventurous mission faster.</p>
 		</div>
 		<div id="randomNumber">
-		<p>Your Number Is:</p>
-		<br>
-		<p>444</p>
+			Random Number:<br><br> <span class="randomNumber"></span>
 		</div>
 		<div id="board">	
-		<p>Wins:</p>
-		<p>Losses:</p>
+			Win: <span class="win"></span>
+			<hr>
+			Losse: <span class="loss"></span>
 		</div>
 		<div id="jewels">
 			<img src="assets/images/yellow.png" id="yellowStone" alt="">
@@ -34,53 +34,98 @@
 			<img src="assets/images/rubyStone.png" id="rubyStone" alt="">
 		</div>
 		<div id="score">
-		<h3>Your Total Score Is</h3>
-		<br>
-		<p>5</p>
+			Total Score <hr><span class="score"></span>
 		</div>
 	</div>
 <script type="text/javascript">
-	$(document).ready(function() {
+$( document ).ready(function() {
+    // console.log( "ready!" );
 
-var numberList = [19,20,30,35]; 
-var chosenNumber = [""];
-// game counters
-var winCounter = 0;
-var lossCounter = 0;
-var numGuesses = 0;
+		var numberList = [20,22,30,40,46,49,50,58,62,68,64,69,82,91,93,110,115,120]; 
+		var chosenNumber = 0;
+		// game counters
+		var winCounter = 0;
+		var lossCounter = 0;
+		var score = 0;
+		// Audio
+		var click = new Audio("click.wav");
+		// Stone values
+		var yellowStone = Math.floor((Math.random() * 10) +1);
+		var diamondStone = Math.floor((Math.random() * 10) +1);
+		var blueStone = Math.floor((Math.random() * 10) +1);
+		var rubyStone = Math.floor((Math.random() * 10) +1);
+		// console.log(yellowStone, diamondStone, blueStone, rubyStone);
 
-// functions
-function startGame() {
+		function updateScore() {
 
-}
-	startGame();
-});
+			$(".randomNumber").empty();
+			$(".randomNumber").append(chosenNumber);
+			$(".win").empty();
+			$(".win").append(winCounter);
+			$(".loss").empty();
+			$(".loss").append(lossCounter);
+			$(".score").empty();
+			$(".score").append(score);
+		}
 
+		function startGame() {
+			winCounter = 0;
+			lossCounter = 0;
+			score = 0;
+			chosenNumber = numberList[Math.floor(Math.random() * numberList.length)];
+		}
 
+		function restart() {
+			score = 0;
+			chosenNumber = numberList[Math.floor(Math.random() * numberList.length)];
+			updateScore();
+		}
+		var logic = function () {
+			if(score == chosenNumber) {
+			winCounter++;
+			document.getElementsByClassName("win").innerHTML = winCounter; 
+			// document.getElementById("jewels").style.background = "#003300";
+			// document.getElementsById("jewels").innerHTML = "You Win!"
+			restart();
+		}
+			else if( score > chosenNumber) {
+			lossCounter++;
+			document.getElementsByClassName("loss").innerHTML = lossCounter; 
+			// document.getElementById("jewels").style.background = "#999921";
+			// document.getElementById("jewels").innerHTML = "You Lose!";
+			restart();
+		}
+			else {
+				updateScore();
+			
+		}
+		}
+			$("#yellowStone").click(function(){
+				 click.play();
+				 score = score + yellowStone;
+				 logic();
 
+			});
 
+			$("#diamondStone").click(function(){
+				click.play();
+				 score = score + diamondStone;
+				 logic();
+			});
 
+			$("#blueStone").click(function(){
+				click.play();
+				 score = score + blueStone;
+				 logic();
+			});
 
-
-
-
-
-
-	// $("#yellowStone").on('click' , function(){
-	// 	alert('hi');
-	// });
-
-	// $("#diamondStone").on('click' , function(){
-	// 	alert('hi');
-	// });
-
-	// $("#blueStone").on('click' , function(){
-	// 	alert('hi');
-	// });
-
-	// $("#rubyStone").on('click' , function(){
-	// 	alert('hi');
-
+			$("#rubyStone").click(function(){
+				click.play();
+				score = score + rubyStone;
+				logic();
+			});
+			startGame();
+		});
 </script>
 </body>
 </html>
