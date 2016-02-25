@@ -7,9 +7,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
-	<script src="http://code.jquery.com/jquery.js"></script>
 	<audio src="background.wav" autoplay loop></audio>
-
 </head>
 <body>
 	<div id="container">
@@ -23,9 +21,9 @@
 			Random Number:<br><br> <span class="randomNumber"></span>
 		</div>
 		<div id="board">	
-			Win: <span class="win"></span>
+			Wins: <span class="win"></span>
 			<hr>
-			Losse: <span class="loss"></span>
+			Losses: <span class="loose"></span>
 		</div>
 		<div id="jewels">
 			<img src="assets/images/yellow.png" id="yellowStone" alt="">
@@ -37,95 +35,7 @@
 			Total Score <hr><span class="score"></span>
 		</div>
 	</div>
-<script type="text/javascript">
-$( document ).ready(function() {
-    // console.log( "ready!" );
-
-		var numberList = [20,22,30,40,46,49,50,58,62,68,64,69,82,91,93,110,115,120]; 
-		var chosenNumber = 0;
-		// game counters
-		var winCounter = 0;
-		var lossCounter = 0;
-		var score = 0;
-		// Audio
-		var click = new Audio("click.wav");
-		// Stone values
-		var yellowStone = Math.floor((Math.random() * 10) +1);
-		var diamondStone = Math.floor((Math.random() * 10) +1);
-		var blueStone = Math.floor((Math.random() * 10) +1);
-		var rubyStone = Math.floor((Math.random() * 10) +1);
-		// console.log(yellowStone, diamondStone, blueStone, rubyStone);
-
-		function updateScore() {
-
-			$(".randomNumber").empty();
-			$(".randomNumber").append(chosenNumber);
-			$(".win").empty();
-			$(".win").append(winCounter);
-			$(".loss").empty();
-			$(".loss").append(lossCounter);
-			$(".score").empty();
-			$(".score").append(score);
-		}
-
-		function startGame() {
-			winCounter = 0;
-			lossCounter = 0;
-			score = 0;
-			chosenNumber = numberList[Math.floor(Math.random() * numberList.length)];
-		}
-
-		function restart() {
-			score = 0;
-			chosenNumber = numberList[Math.floor(Math.random() * numberList.length)];
-			updateScore();
-		}
-		var logic = function () {
-			if(score == chosenNumber) {
-			winCounter++;
-			document.getElementsByClassName("win").innerHTML = winCounter; 
-			// document.getElementById("jewels").style.background = "#003300";
-			// document.getElementsById("jewels").innerHTML = "You Win!"
-			restart();
-		}
-			else if( score > chosenNumber) {
-			lossCounter++;
-			document.getElementsByClassName("loss").innerHTML = lossCounter; 
-			// document.getElementById("jewels").style.background = "#999921";
-			// document.getElementById("jewels").innerHTML = "You Lose!";
-			restart();
-		}
-			else {
-				updateScore();
-			
-		}
-		}
-			$("#yellowStone").click(function(){
-				 click.play();
-				 score = score + yellowStone;
-				 logic();
-
-			});
-
-			$("#diamondStone").click(function(){
-				click.play();
-				 score = score + diamondStone;
-				 logic();
-			});
-
-			$("#blueStone").click(function(){
-				click.play();
-				 score = score + blueStone;
-				 logic();
-			});
-
-			$("#rubyStone").click(function(){
-				click.play();
-				score = score + rubyStone;
-				logic();
-			});
-			startGame();
-		});
-</script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="assets/javascript/game.js"></script>
 </body>
 </html>

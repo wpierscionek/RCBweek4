@@ -77,3 +77,12 @@ body{
 	font-size: 40px;
 	color: #fff;
 }
+.winner{
+	font-size: 47px;
+	color: red;
+	background-color: blue;
+}
+.gameover{
+	font-size: 47px;
+	color: red;
+}
