@@ -1,5 +1,3 @@
-$( document ).ready(function() {
-    // console.log( "ready!" );
 		var numberList = [20,22,30,40,46,49,50,58,62,68,64,69,82,91,93,110,115,120]; 
 		var chosenNumber = 0;
 		// game counters
@@ -59,6 +57,8 @@ $( document ).ready(function() {
 				updateScore();
 		}
 		}
+		$(document).ready(function() {
+  		  // console.log( "ready!" );
 			$("#yellowStone").click(function(){
 				 click.play();
 				 click.currentTime = 0;
